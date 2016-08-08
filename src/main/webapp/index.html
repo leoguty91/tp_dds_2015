@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Recetas</title>
+	<link href="bower/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Angular y modulos -->
+	<script src="bower/angular.min.js"></script>
+	<script src="bower/angular-route.min.js"></script>
+	<script src="bower/angular-cookies.min.js"></script>
+	<script src="bower/angular-mocks.js"></script>
+	<script src="bower/angular-strap.min.js"></script>
+	<script src="bower/angular-strap.tpl.min.js"></script>
+	<script src="bower/angular-locale_es-ar.js"></script>
+	<script src="bower/lodash.min.js"></script>
+	<script src="bower/restangular.min.js"></script>
+	<!-- Modulo principal de la app -->
+	<script src="js/main.js"></script>
+	<script src="js/constant.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/directives.js"></script>
+	<script src="js/factory.js"></script>
+	<script src="js/service.js"></script>
+	<!-- Modulos secundarios -->
+	<script src="bower/jquery.min.js"></script>
+    <script src="bower/js/bootstrap.min.js"></script>
+</head>
+<body ng-controller="loginCtrl">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">Recetas</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right" ng-show="userIsLoggin()">
+                <li class="dropdown">
+					<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Men&uacute; <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                    	<!-- <li><a href="#modificarPerfil"><span class="glyphicon glyphicon-user"></span> Modificar perfil</a></li> -->
+						<li><a href="#recetas"><span class="glyphicon glyphicon-apple"></span> Recetas</a></li>
+						<li><a href="#grupos"><span class="glyphicon glyphicon-th-large"></span> Grupos</a></li>
+                        <li><a href="#planificaciones"><span class="glyphicon glyphicon-calendar"></span> Planificar comida</a></li>
+                        <li><a href="#estadisticas"><span class="glyphicon glyphicon-stats"></span> Estad&iacute;sticas</a></li>
+                        <li><a href="#reportes"><span class="glyphicon glyphicon-list-alt"></span> Reportes</a></li>
+                        <li><a href="#recomendaciones"><span class="glyphicon glyphicon-leaf"></span> Recomendaci&oacute;n</a></li>
+                        <li><a href ng-click="unloggin()"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesi&oacute;n</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-hide="userIsLoggin()">
+				<li><a href="#registrarUsuario">Registrarse</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container" ng-repeat="mensaje in errors track by $index">
+    	<div class="alert alert-danger alert-dismissible" role="alert">
+    		<button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+    			<span aria-hidden="true">&times;</span>
+    		</button>
+    		<strong>¡Error!</strong> {{ mensaje }}
+    	</div>
+    </div>
+        <div class="container" ng-repeat="mensaje in success track by $index">
+    	<div class="alert alert-success alert-dismissible" role="alert">
+    		<button type="button" class="close" data-dismiss="alert" aria-label="Cerrar">
+    			<span aria-hidden="true">&times;</span>
+    		</button>
+    		<strong>¡Bien!</strong> {{ mensaje }}
+    	</div>
+    </div>
+    <div class="container">
+        <div ng-view></div>
+    </div>
+</body>
+</html>

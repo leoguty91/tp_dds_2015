@@ -1,0 +1,18 @@
+<datos-receta></datos-receta>
+<div class="row">
+	<div class="col-sm-4" ng-hide="contieneReceta">
+		<div class="form-group">
+			<button class="btn btn-primary" ng-click="save(receta)">Copiar a mis recetas</button>
+		</div>
+	</div>
+	<div class="col-sm-4" ng-show="contieneReceta">
+		<div class="form-group">
+			<a href="#recetaModifica/{{ receta.id }}" class="btn btn-primary">Modificar receta</a>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<div class="form-group">
+			<a href="#planificacionReceta/{{ receta.id }}" class="btn btn-primary">Planificar receta</a>
+		</div>
+	</div>
+</div>

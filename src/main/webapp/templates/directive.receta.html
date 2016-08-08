@@ -1,0 +1,69 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1>Recetas</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<h2><div ng-transclude></div></h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+	<form name="recetaForm" id="recetaForm" ng-submit="save(receta)">
+		<div class="form-group">
+			<label>Nombre</label>
+			<input class="form-control" type="text" placeholder="Nombre" ng-model="receta.nombre" ng-disabled="!puedeEditar" required>
+		</div>
+		<div class="form-group">
+			<label>Ingredientes</label>
+			<div class="input-group" ng-hide="!puedeEditar">
+				<input type="text" class="form-control" placeholder="Nuevo Ingrediente" ng-model="ingrediente">
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="agregaIngrediente()">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+					<button class="btn btn-default" type="button" ng-click="eliminaIngrediente()">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</span>
+			</div>
+			<div class="input-group">
+			<span ng-repeat="ingrediente in receta.ingredientes">
+				<span class="label label-primary" ng-click="seleccionaIngrediente(ingrediente)">{{ ingrediente }}</span>
+			</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Procedimiento</label>
+			<textarea class="form-control" type="text" placeholder="Procedimiento" ng-model="receta.procedimiento" ng-disabled="!puedeEditar"></textarea>
+		</div>
+		<div class="form-group">
+			<label>Dificultad</label>
+			<select class="form-control" ng-model="receta.dificultad" ng-disabled="!puedeEditar" ng-init="receta.dificultad = 'FACIL'">
+				<option value="FACIL">F&aacute;cil</option>
+				<option value="MEDIA">Media</option>
+				<option value="DIFICIL">Dif&iacute;cil</option>
+				<option value="MUYDIFICIL">Muy dif&iacute;cil</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Temporada Recetario</label>
+			<select class="form-control" ng-model="receta.temporada" ng-disabled="!puedeEditar" ng-init="receta.temporada = 'VERANO'">
+				<option value="VERANO">Verano</option>
+				<option value="OTONIO">Oto&ntilde;o</option>
+				<option value="INVIERNO">Invierno</option>
+				<option value="PRIMAVERA">Primavera</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Calor&iacute;as Totales</label>
+			<input class="form-control" type="number" min="0" placeholder="Calorias" ng-model="receta.calorias" ng-disabled="!puedeEditar" ng-init="receta.calorias = 0">
+		</div>
+		<div class="form-group" ng-show="puedeEditar">
+			<button class="btn btn-primary" type="submit">Guardar</button>
+			<button class="btn btn-primary" ng-show="puedeEliminar" ng-click="eliminaReceta()">Eliminar</button>
+		</div>
+	</form>
+	</div>
+</div>

@@ -1,0 +1,56 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1>Recetas</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				Crear receta <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="#recetaNueva">Nueva</a></li>
+				<li><a href="#recetaExistente">A partir de una existente</a></li>
+			</ul>
+		</div>
+	</div>
+</div><p />
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">&Uacute;ltimas recetas</h3>
+			</div>
+			<div class="panel-body">
+				<div class="list-group">
+					<a href="#receta/{{ receta.id }}" ng-repeat="receta in ultimasRecetas track by $index" class="list-group-item">{{ receta.nombre }} <small>- {{ receta.autor }}</small></a>
+				</div>
+				<div ng-show="ultimasRecetas.length == 0">No se encontraron recetas</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Recetas propias</h3>
+			</div>
+			<div class="panel-body">
+				<div class="input-group" ng-repeat="receta in recetasPropias track by $index">
+					<span type="text" class="form-control">{{ receta.nombre }}</span>
+					<div class="input-group-btn">
+						<a type="button" class="btn btn-default" href="#recetaModifica/{{ receta.id }}">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+						<button type="button" class="btn btn-default" ng-click="eliminaReceta(receta)">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</div>
+				</div>
+				<div ng-show="recetasPropias.length == 0">No se encontraron recetas</div>
+			</div>
+		</div>
+	</div>
+</div>

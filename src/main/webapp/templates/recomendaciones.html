@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1>Recomendaci&oacute;n</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="form-group">
+			<div class="col-sm-4" ng-init="tipoComida = 'DESAYUNO'">
+				<select class="form-control" ng-model="tipoComida">
+					<option value="DESAYUNO">Desayuno</option>
+					<option value="ALMUERZO">Almuerzo</option>
+					<option value="MERIENDA">Merienda</option>
+					<option value="CENA">Cena</option>
+				</select>
+			</div>
+			<div class="col-sm-4">
+				<button class="btn btn-primary form-control" ng-click="recomendacionPuntaje()">Recomendar por puntaje</button>
+			</div>
+			<div class="col-sm-4">
+				<button class="btn btn-primary form-control" ng-click="recomendacionPiramide()">Recomendar por piramide</button>
+			</div>
+		</div>		
+	</div>
+</div>
+<div class="row" ng-show="recetas.length > 0">
+	<div class="col-lg-12">
+		<h2>Recetas</h2>
+		<div class="list-group">
+			<a href="#receta/{{ receta.id }}" ng-repeat="receta in recetas | orderBy:'-puntaje'" class="list-group-item">
+				<span>{{ receta.nombre }}</span>
+				<span class="badge">{{ receta.puntaje }}</span>
+			</a>
+		</div>
+	</div>
+</div>

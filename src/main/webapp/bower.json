@@ -1,0 +1,20 @@
+{
+  "name": "Recetas",
+  "version": "0.6.0",
+  "description": "TP para Diseño de Sistemas, UTN",
+  "main": "WebContent/index.html",
+  "authors": [
+    "Leonel Gutierrez <leoguty91@gmail.com>",
+    "Matias Aguirre <mthx.xhtm@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular-cookies": "~1.4.7",
+    "angular": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular-mocks": "~1.4.7",
+    "restangular": "~1.5.1",
+    "angular-strap": "~2.3.7"
+  }
+}

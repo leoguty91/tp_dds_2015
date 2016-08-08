@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1>Grupos</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Grupos</h3>
+			</div>
+			<div class="panel-body">
+				<div class="list-group" ng-hide="gruposGeneral.length == 0">
+					<a href="#grupo/{{ grupo.nombre }}" ng-repeat="grupo in gruposGeneral track by $index" class="list-group-item">{{ grupo.nombre }}</a>
+				</div>
+				<div ng-show="gruposGeneral.length == 0">No se encontraron grupos</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Mis grupos</h3>
+			</div>
+			<div class="panel-body">
+				<div class="list-group" ng-hide="gruposPropios.length == 0">
+					<a href="#grupo/{{ grupo.nombre }}" ng-repeat="grupo in gruposPropios track by $index" class="list-group-item">{{ grupo.nombre }}</a>
+				</div>
+				<div ng-show="gruposPropios.length == 0">No pertenece a ning&uacute;n grupo</div>
+			</div>
+		</div>
+	</div>
+</div>

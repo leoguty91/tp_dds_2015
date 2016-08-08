@@ -1,0 +1,88 @@
+<div class="row">
+	<div class="col-lg-12">
+	<form name="usuarioForm" id="usuarioForm" ng-submit="save(usuario)">
+		<div class="form-group">
+			<label>Nombre</label>
+			<input class="form-control" type="text" placeholder="Nombre" ng-model="usuario.nombre" ng-required="true" />
+		</div>
+		<div class="form-group">
+			<label>Correo Electr&oacute;nico</label>
+			<input class="form-control" type="email" placeholder="Correo Electr&oacute;nico" name="email" ng-model="usuario.email" ng-required="true" />
+		</div>
+		<div class="form-group">
+			<label>Contrase&ntilde;a</label>
+			<input class="form-control" type="password" placeholder="Contrase&ntilde;a" name="password" ng-model="usuario.password" ng-required="!userIsLoggin()" />
+		</div>
+		<div class="form-group">
+			<label>Fecha de Nacimiento</label>
+			<input type="text" class="form-control" ng-model="usuario.fechaNacimiento" bs-datepicker ng-required="true">
+		</div>
+		<div class="form-group">
+			<label>Altura</label>
+			<input class="form-control" type="text" placeholder="Altura" ng-model="usuario.altura" />
+		</div>
+		<div class="form-group">
+			<label>Sexo</label>
+			<select class="form-control" ng-model="usuario.sexo" ng-init="usuario.sexo = 'FEMENINO'">
+				<option value="FEMENINO">Femenino</option>
+				<option value="MASCULINO">Masculino</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Preferencias</label>
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Agregue nueva Preferencia" ng-model="preferencia" />
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="agregaPreferencia()">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+					<button class="btn btn-default" type="button" ng-click="eliminaPreferencia()">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<span ng-repeat="preferencia in usuario.preferencias">
+				<span class="label label-primary" ng-click="seleccionaPreferencia(preferencia)">{{ preferencia }}</span>
+			</span>
+		</div>
+		<div class="form-group">
+			<label>Rutina de Ejercicio F&iacute;sico</label>
+			<select class="form-control" ng-model="usuario.rutina" ng-init="usuario.rutina = '0'">
+				<option value="0">Sedentaria con nada de ejercicio</option>
+				<option value="1">Sedentaria con algo de ejercicio</option>
+				<option value="2">Sedentaria con ejercicio</option>
+				<option value="3">Activa sin ejercicio adicional</option>
+				<option value="4">Activa con ejercicio adicional</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label>Condici&oacute;n-Preexistente</label>
+			<div class="input-group">
+				<select class="form-control" ng-model="condicion" ng-init="condicion = 'DIABETES'">
+					<option value="DIABETES">Diabetes</option>
+					<option value="HIPERTENSION">Hipertensi&oacute;n</option>
+					<option value="CELIASIS">Cel&iacute;asis</option>
+				</select>
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" ng-click="agregarCondicion()">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+					<button class="btn btn-default" type="button" ng-click="eliminaCondicion()">
+						<span class="glyphicon glyphicon-minus"></span>
+					</button>
+				</span>
+			</div>
+		</div>
+		<div class="form-group">
+			<span ng-repeat="condicion in usuario.condiciones">
+				<span class="label label-primary" ng-click="seleccionaCondicion(condicion)">{{ condicion }}</span>
+			</span>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit">Guardar</button>
+		</div>
+	</form>
+	</div>
+</div>

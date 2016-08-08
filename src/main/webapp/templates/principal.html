@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-lg-12">
+		<h1>Bienvenido {{ usuario.nombre }}</h1>
+	</div>
+	<div class="col-lg-12">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">&Uacute;ltimas recetas</h3>
+			</div>
+			<div class="panel-body">
+				<div class="list-group" ng-hide="ultimasRecetas.length == 0">
+					<a href="#receta/{{ receta.id }}" ng-repeat="receta in ultimasRecetas track by $index" class="list-group-item">{{ receta.nombre }} <small>- {{ receta.autor }}</small></a>
+				</div>
+				<div ng-show="ultimasRecetas.length == 0">No se encontraron recetas</div>
+			</div>
+		</div>
+	</div>
+</div>
